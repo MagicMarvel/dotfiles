@@ -1,0 +1,55 @@
+{
+    "name": "magicmarvel-snippet",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "all"
+                ],
+                "path": "./all.json"
+            },
+            {
+                "language": [
+                    "javascript"
+                ],
+                "path": "./javascript.json"
+            },
+            {
+                "language": [
+                    "javascriptreact"
+                ],
+                "path": "./javascriptreact.json"
+            },
+            {
+                "language": [
+                    "typescript"
+                ],
+                "path": "./typescript.json"
+            },
+            {
+                "language": [
+                    "typescriptreact"
+                ],
+                "path": "./typescriptreact.json"
+            },
+            {
+                "language": [
+                    "cpp"
+                ],
+                "path": "./cpp.json"
+            },
+            {
+                "language": [
+                    "latex"
+                ],
+                "path": "./latex.json"
+            },
+            {
+                "language": [
+                    "rust"
+                ],
+                "path": "./rust.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,177 @@
+{
+    "acm竞赛头文件模板": {
+        "prefix": "ACM-template",
+        "body": [
+            "#include<bits/stdc++.h>",
+            "",
+            "using namespace std;",
+            "",
+            "void fileInOut() {",
+            "#ifdef LOCAL",
+            "    freopen(\"read.txt\", \"r\", stdin);",
+            "    freopen(\"write.txt\", \"w\", stdout);",
+            "#endif",
+            "}",
+            "",
+            "int main() {",
+            "    std::ios::sync_with_stdio(false);",
+            "    \/\/fileInOut();",
+            "    $0",
+            "",
+            "    return 0;",
+            "}"
+        ],
+        "description": "acm竞赛头文件模板"
+    },
+    "i的for循环": {
+        "prefix": "fori",
+        "description": "i的for循环",
+        "body": [
+            "for (int i = 1; i <= $1; i++) {",
+            "    $2",
+            "}"
+        ]
+    },
+    "j的for循环": {
+        "prefix": "forj",
+        "description": "j的for循环",
+        "body": [
+            "for (int j = 1; j <= $1; j++) {",
+            "    $0",
+            "}"
+        ]
+    },
+    "k的for循环": {
+        "prefix": "fork",
+        "description": "k的for循环",
+        "body": [
+            "for (int k = 1; k <= $1; k++) {",
+            "    $0",
+            "}"
+        ]
+    },
+    "并查集": {
+        "prefix": "bcj",
+        "description": "并查集，一定需要初始化",
+        "body": [
+            "class UnionFindAlgorithm {",
+            "   private:",
+            "    int unionSize;",
+            "    vector<int> father;",
+            "",
+            "   public:",
+            "    UnionFindAlgorithm(int n) {",
+            "        this->unionSize = n;",
+            "        for (int i = 0; i <= unionSize; i++) father.push_back(i);",
+            "    }",
+            "    int find(int a) {",
+            "        if (father[a] != a) father[a] = find(father[a]);",
+            "        return father[a];",
+            "    }",
+            "    void Union(int a, int b) { father[find(a)] = find(b); }",
+            "    bool isSameUnion(int a, int b) { return (find(a)) == (find(b)); }",
+            "};"
+        ]
+    },
+    "邻接链表": {
+        "prefix": "ljlb",
+        "description": [
+            "输入边数",
+            "放进edge里的结构体必须要有next,from,to,这几个,home指的是导航数组.如果edge[.].next为0说明结束了没有下一条边",
+            "v用于计数，一定要记得初始化为0"
+        ],
+        "body": [
+            "int v=0,home[$1];",
+            "struct myMap{",
+            "int from,to,next;",
+            "}edge[$0];",
+            "template <typename T> void adjacencyListMake(T *edge, int *home, int a, int b, int &v)",
+            "{",
+            "v++;",
+            "edge[v].next=home[a];",
+            "edge[v].from=a;",
+            "edge[v].to=b;",
+            "home[a]=v;",
+            "}"
+        ]
+    },
+    "黑框输出的停止语句": {
+        "prefix": "ppause",
+        "description": "system(\"pause\");",
+        "body": "system(\"pause\");"
+    },
+    "线段树": {
+        "prefix": "xds",
+        "description": "线段树",
+        "body": [
+            "inline long long ls(long long p) { return p << 1; }",
+            "inline long long rs(long long p) { return (p << 1) | 1; }",
+            "",
+            "long long tree[400010], tag[400010], map[100001];",
+            "",
+            "void push_up(long p) // 按需要维护",
+            "{",
+            "    tree[p] = tree[ls(p)] + tree[rs(p)];",
+            "}",
+            "",
+            "void push_down(long p, long l, long r) {",
+            "    long long mid;",
+            "    mid = (l + r) >> 1;",
+            "    tree[ls(p)] += tag[p] * (mid - l + 1);",
+            "    tree[rs(p)] += tag[p] * (r - mid);",
+            "    tag[ls(p)] += tag[p];",
+            "    tag[rs(p)] += tag[p];",
+            "    tag[p] = 0;",
+            "}",
+            "// l,r是表示的区间,p是该区间在线段树上的节点",
+            "void build(long long p, long long l, long long r) {",
+            "    long long mid;",
+            "    if (l == r) {",
+            "        tree[p] = map[l];",
+            "        return;",
+            "    }",
+            "    mid = (l + r) >> 1;",
+            "    build(ls(p), l, mid);",
+            "    build(rs(p), mid + 1, r);",
+            "    push_up(p);",
+            "}",
+            "",
+            "// 更新时ql,qr填需要更新的区间,p填根节点(基本都是1),l,r填最左和最右的(基本是1和n),num为操作",
+            "void update(long long ql, long long qr, long long p, long long l, long long r,",
+            "            long long num) {",
+            "    long long mid;",
+            "    if (ql <= l && r <= qr) {",
+            "        tree[p] += num * (r - l + 1);",
+            "        tag[p] += num;",
+            "        return;",
+            "    }",
+            "    // 一定要标记下放的原因是下面的查询直接返回的是tree[p]的值，不下放可能tree[p]上面的tag[]影响会到。。。",
+            "    push_down(p, l, r);",
+            "    mid = (l + r) >> 1;",
+            "    if (mid >= ql)",
+            "        update(ql, qr, ls(p), l, mid, num);",
+            "    // 因为接下来处理的区间是mid+1到r所以判断时用mid+1来判断",
+            "    if (mid + 1 <= qr)",
+            "        update(ql, qr, rs(p), mid + 1, r, num);",
+            "    push_up(p);",
+            "}",
+            "",
+            "// 更新时ql,qr填需要加起来的区间,p填根节点(基本都是1),l,r填最左和最右的(基本是1和n),",
+            "long long query(long long ql, long long qr, long long p, long long l,",
+            "                long long r) {",
+            "    long long tmp = 0, mid;",
+            "    if (ql <= l && r <= qr) {",
+            "        return tree[p];",
+            "    }",
+            "    mid = (l + r) >> 1;",
+            "    push_down(p, l, r);",
+            "    // 不能在这里push_down(ls(p),l,mid)来代替上面那一句,因为没有上面那句下面的左右子树的tree是没更新过的即使用push_down(ls(p),l,mid)也无法更新到这两个子树;",
+            "    if (mid >= ql)",
+            "        tmp += query(ql, qr, ls(p), l, mid);",
+            "    if (mid + 1 <= qr)",
+            "        tmp += query(ql, qr, rs(p), mid + 1, r);",
+            "    return tmp;",
+            "}"
+        ]
+    }
+}

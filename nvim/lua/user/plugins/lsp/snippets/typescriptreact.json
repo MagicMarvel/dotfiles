@@ -1,0 +1,12 @@
+{
+    "快速插入类型断言": {
+        "prefix": "isType",
+        "body": [
+            "function is$1(x: any): x is $1 {",
+            "return (x as $1)$2;",
+            "}",
+            "$0"
+        ],
+        "description": "Log output to console"
+    }
+}

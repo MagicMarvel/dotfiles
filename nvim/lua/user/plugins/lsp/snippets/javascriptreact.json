@@ -1,0 +1,31 @@
+{
+    "generate a div with class": {
+        "prefix": ".",
+        "body": [
+            "<div className=\"$1\">",
+            "    $0",
+            "</div>"
+        ],
+        "description": "generate a div with class"
+    },
+    "write a react component": {
+        "prefix": "rcn",
+        "body": [
+            "import React from \"react\";",
+            "class index extends React.Component{",
+            "    render(){",
+            "        return (",
+            "           <p>index</p>",
+            "        )",
+            "    }",
+            "}",
+            "export default index;"
+        ],
+        "description": "Log output to console"
+    },
+    "lazy import": {
+        "prefix": "lzi",
+        "body": "const $1 = lazy(()=>import(\"$2\"));$0",
+        "description": "动态引入，用于分割打包后的代码"
+    }
+}

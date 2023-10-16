@@ -1,0 +1,35 @@
+{
+    "write a react class component": {
+        "prefix": "rcn",
+        "body": [
+            "import React from \"react\";",
+            "class index extends React.Component{",
+            "    render(){",
+            "        return (",
+            "           <div>",
+            "               <p>index</p>",
+            "           </div>",
+            "        )",
+            "    }",
+            "}",
+            "export default index;"
+        ],
+        "description": "write a react class component"
+    },
+    "generate a div with class": {
+        "prefix": ".",
+        "body": [
+            "<div className=\"$1\">",
+            "    $0",
+            "</div>"
+        ],
+        "description": "generate a div with class"
+    },
+    "quickly add style": {
+        "prefix": "sty",
+        "body": [
+            "style={{$0}}"
+        ],
+        "description": "quickly add style"
+    }
+}

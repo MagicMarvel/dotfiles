@@ -1,0 +1,9 @@
+{
+    "快速打log": {
+        "prefix": "log",
+        "body": [
+            "console.log($1)$0"
+        ],
+        "description": "Log output to console"
+    }
+}
