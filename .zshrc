@@ -148,3 +148,5 @@ export PATH=$PATH:$HOME/.local/share/cmake-3.27.4/bin
 export PATH=$PATH:$HOME/.local/bin
 
 export EDITOR='nvim'
+
+alias dc=cd

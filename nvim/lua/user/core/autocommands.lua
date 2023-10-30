@@ -97,3 +97,12 @@ vim.api.nvim_create_user_command("SwitchWrap", function()
         vim.o.wrap = true
     end
 end, {})
+
+-- 切换2个空格或者4个空格的缩进
+vim.api.nvim_create_user_command("SwitchNumber", function()
+    if vim.o.number == true then
+        vim.o.number = false
+    else
+        vim.o.number = true
+    end
+end, {})
