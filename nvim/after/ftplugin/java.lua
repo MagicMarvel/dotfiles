@@ -34,7 +34,7 @@ local config = {
         "-Xms1g",
         "-Xmx2G",
         "-javaagent:" .. lombok_dir,
-        "-Xbootclasspath/a:" .. lombok_dir,
+        -- "-Xbootclasspath/a:" .. lombok_dir,
         "-jar", jar,
         "-configuration",
         jdtls_config,
