@@ -93,3 +93,7 @@ if vim.g.neovide then
     vim.keymap.set('i', '<c-v>', '<C-R>+') -- Paste insert mode
     vim.cmd [[:colorscheme darkplus]]
 end
+
+if os.getenv("TERM") == "alacritty" then
+    vim.o.ttymouse = "sgr"
+end

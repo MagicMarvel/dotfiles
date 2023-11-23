@@ -137,10 +137,6 @@ return {
                             vim.api.nvim_buf_line_count(bufnr) > 2000
                     end,
                 },
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
-                },
                 playground            = {
                     enable = true,
                     disable = {},
@@ -287,7 +283,13 @@ return {
         "numToStr/Comment.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
+            {
+                "JoosepAlviste/nvim-ts-context-commentstring",
+                config = function()
+                    require("ts_context_commentstring").setup({})
+                    vim.g.skip_ts_context_commentstring_module = true
+                end
+            },
         },
         opts = function()
             return {
@@ -429,19 +431,17 @@ return {
                 },
                 formatting = {
                     format = lspkind.cmp_format({
-                        mode = "symbol_text", -- show only symbol annotations
-                        -- maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                        -- ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                        mode = "symbol",       -- show only symbol annotations
+                        preset = 'codicons',
+                        maxwidth = 100,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                         menu = {
-                            buffer = "[Buffer]",
-                            nvim_lsp = "[LSP]",
-                            nvim_lua = "[Lua]",
-                            luasnip = "[LuaSnip]",
-                            path = "[Path]",
+                            copilot = "",
                         },
                     })
                 },
                 sources = {
+                    { name = "copilot" },
                     { name = "neorg" },
                     { name = "luasnip" },
                     { name = "nvim_lsp" },
@@ -465,7 +465,25 @@ return {
                 -- 在底部的时候，菜单向上打开
                 view = {
                     entries = { name = 'custom', selection_order = 'near_cursor' }
-                }
+                },
+                sorting = {
+                    priority_weight = 2,
+                    comparators = {
+                        require("copilot_cmp.comparators").prioritize,
+
+                        -- Below is the default comparitor list and order for nvim-cmp
+                        cmp.config.compare.offset,
+                        -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+                        cmp.config.compare.exact,
+                        cmp.config.compare.score,
+                        cmp.config.compare.recently_used,
+                        cmp.config.compare.locality,
+                        cmp.config.compare.kind,
+                        cmp.config.compare.sort_text,
+                        cmp.config.compare.length,
+                        cmp.config.compare.order,
+                    },
+                },
             }
         end
     },
