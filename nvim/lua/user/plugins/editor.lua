@@ -34,7 +34,7 @@ return {
         init = function()
             vim.g.neo_tree_remove_legacy_commands = 1
             if vim.fn.argc() == 1 then
-                local stat = vim.loop.fs_stat(vim.fn.argv(0))
+                local stat = vim.loop.fs_stat(vim.fn.argv()[1])
                 if stat and stat.type == "directory" then
                     require("neo-tree")
                 end
@@ -91,6 +91,13 @@ return {
     {
         "j-hui/fidget.nvim",
         event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            progress = {
+                poll_rate = 0.5,
+                ignore_done_already = true,
+                suppress_on_insert = true
+            }
+        },
         enabled = function()
             if vim.g.neovide then
                 return true

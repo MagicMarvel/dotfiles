@@ -81,12 +81,12 @@ return {
             { "<leader>lI", "<cmd>LspInstallInfo<cr>",                     desc = "Installer Info" },
             {
                 "<leader>lj",
-                "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+                "<cmd>lua vim.diagnostic.goto_next()<CR>",
                 desc = "Next Diagnostic",
             },
             {
                 "<leader>lk",
-                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+                "<cmd>lua vim.diagnostic.goto_prev()<cr>",
                 desc = "Prev Diagnostic",
             },
             { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>",      desc = "CodeLens Action" },

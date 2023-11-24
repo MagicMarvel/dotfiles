@@ -68,9 +68,9 @@ return {
                     if require("trouble").is_open() then
                         require("trouble").previous({ skip_groups = true, jump = true })
                     else
-                        local ok, err = pcall(vim.cmd.cprev)
+                        local ok, err = pcall(vim.cmd.cprevious)
                         if not ok then
-                            vim.notify(err, vim.log.levels.ERROR)
+                            vim.notify(tostring(err), vim.log.levels.ERROR)
                         end
                     end
                 end,
@@ -84,7 +84,7 @@ return {
                     else
                         local ok, err = pcall(vim.cmd.cnext)
                         if not ok then
-                            vim.notify(err, vim.log.levels.ERROR)
+                            vim.notify(tostring(err), vim.log.levels.ERROR)
                         end
                     end
                 end,
@@ -286,6 +286,7 @@ return {
             {
                 "JoosepAlviste/nvim-ts-context-commentstring",
                 config = function()
+                    ---@diagnostic disable-next-line: missing-fields
                     require("ts_context_commentstring").setup({})
                     vim.g.skip_ts_context_commentstring_module = true
                 end

@@ -238,13 +238,9 @@ return {
         },
         event = "VeryLazy",
         opts = function()
-            -- local hide_in_width = function()
-            --     return vim.fn.winwidth(0) > 80
-            -- end
-
-            -- local getStartUpTime = function()
-            --     return "🕐 " .. math.floor(require("lazy").stats().startuptime) .. "ms"
-            -- end
+            local hide_in_width = function()
+                return vim.fn.winwidth(0) > 80
+            end
 
             local diagnostics = {
                 "diagnostics",
@@ -305,7 +301,9 @@ return {
                     lualine_b = { mode },
                     lualine_c = {
                         {
+                            ---@diagnostic disable-next-line: undefined-field
                             require("noice").api.status.mode.get,
+                            ---@diagnostic disable-next-line: undefined-field
                             cond = require("noice").api.status.mode.has,
                             color = { fg = "#ff9e64" },
                         }
