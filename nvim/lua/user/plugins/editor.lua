@@ -508,7 +508,7 @@ return {
                 u = {
                     name = "+Utils",
                     r = { [[<cmd>lua ReloadConfig()<CR>]], "Reload Config" },
-                    s = { "<cmd>SwitchSpace<CR>", "Switch Space" },
+                    s = { "<cmd>SwitchIndent<CR>", "Switch Indent" },
                     c = { "<cmd>tabnew $MYVIMRC <CR>", "Config Nvim" },
                     w = { "<cmd>SwitchWrap<CR>", "Switch Wrap" },
                     n = { "<cmd>SwitchNumber<CR>", "Switch number" }

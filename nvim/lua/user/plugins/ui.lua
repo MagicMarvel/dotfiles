@@ -288,7 +288,7 @@ return {
             }
 
             local spaces = function()
-                return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+                return "spaces: " .. vim.opt.tabstop:get()
             end
             return {
                 options = {

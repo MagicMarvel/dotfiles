@@ -200,18 +200,18 @@ return {
             local formatting = null_ls.builtins.formatting
             -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
             -- local diagnostics = null_ls.builtins.diagnostics
-
+            vim.print(vim.inspect(vim.opt.tabstop:get()))
             return {
                 debug = false,
                 -- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
                 -- filetypes = { "markdown", "text" },
                 sources = {
-                    -- 设置2格缩进
                     formatting.prettier.with({
                         filetypes = { "html", "javascript", "javascriptreact",
                             "typescript", "typescriptreact", "xml",
                             "css" },
-                        extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--tab-width=2" }
+                        extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote",
+                            "--tab-width=2" },
                     }),
                     formatting.yamlfmt
                 },
@@ -255,7 +255,9 @@ return {
         cmd = "Copilot",
         event = "InsertEnter",
         opts = {
-            suggestion = { enabled = false },
+            suggestion = {
+                enabled = false,
+            },
             panel = { enabled = false },
         }
     },
