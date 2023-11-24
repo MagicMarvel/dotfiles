@@ -430,15 +430,23 @@ return {
                     ["<CR>"] = cmp.mapping.confirm { select = true },
                 },
                 formatting = {
-                    format = lspkind.cmp_format({
-                        mode = "symbol",       -- show only symbol annotations
-                        preset = 'codicons',
-                        maxwidth = 100,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                        menu = {
-                            copilot = "",
-                        },
-                    })
+                    format = function(entry, vim_item)
+                        -- lspkind没有copilot的图标，在这里补上
+                        if entry.source.name == "copilot" then
+                            vim_item.kind = ""
+                            return vim_item
+                        elseif entry.source.name == "neorg" then
+                            vim_item.kind = "󰈙"
+                            return vim_item
+                        else
+                            return lspkind.cmp_format({
+                                mode = "symbol",       -- show only symbol annotations
+                                preset = 'codicons',
+                                maxwidth = 100,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                                ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                            })(entry, vim_item)
+                        end
+                    end
                 },
                 sources = {
                     { name = "copilot" },
