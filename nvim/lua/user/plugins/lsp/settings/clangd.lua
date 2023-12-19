@@ -1,9 +1,10 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = "utf-16"
 return {
+    single_file_support = true,
     capabilities = capabilities,
     keys = {
-        { "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+        { "<leader>lR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
     },
     root_dir = function(fname)
         return require("lspconfig.util").root_pattern(
@@ -22,6 +23,7 @@ return {
         "clangd",
         "--background-index",
         "--clang-tidy",
+        -- "--format-style=llvm",
         "--header-insertion=iwyu",
         "--completion-style=detailed",
         "--function-arg-placeholders",

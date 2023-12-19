@@ -97,3 +97,5 @@ end
 if os.getenv("TERM") == "alacritty" then
     vim.o.ttymouse = "sgr"
 end
+
+vim.cmd [[colorscheme torte]]

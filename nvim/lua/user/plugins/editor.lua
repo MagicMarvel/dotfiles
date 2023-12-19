@@ -95,7 +95,12 @@ return {
             progress = {
                 poll_rate = 0.5,
                 ignore_done_already = true,
-                suppress_on_insert = true
+                suppress_on_insert = true,
+                ignore_empty_message = true
+            },
+            display = {
+                -- 只持续两秒
+                done_ttl = 2
             }
         },
         enabled = function()

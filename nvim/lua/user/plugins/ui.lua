@@ -328,9 +328,9 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = true,
-        init = function()
-            vim.cmd [[colorscheme tokyonight]]
-        end,
+        -- init = function()
+        --     vim.cmd [[colorscheme tokyonight]]
+        -- end,
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
