@@ -19,8 +19,8 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- 快速保存
-keymap("", "<C-s>", "<cmd>w<cr>", opts)
-keymap("i", "<C-s>", "<cmd>w<cr><esc>", opts)
+keymap("", "<C-s>", "<cmd>silent w<cr>", opts)
+keymap("i", "<C-s>", "<cmd>silent w<cr><esc>", opts)
 -- -- 快速撤销
 keymap("", "<C-z>", "<cmd>:undo<cr>", opts)
 keymap("i", "<C-z>", "<cmd>:undo<cr>", opts)
