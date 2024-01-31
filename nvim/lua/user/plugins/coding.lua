@@ -113,10 +113,10 @@ return {
                 { "bash", "c", "cpp", "javascript", "json", "lua",
                     "python", "typescript", "tsx", "css", "rust",
                     "java", "html", "vue", "jsdoc", "yaml",
-                    "markdown", "markdown_inline", "scss" }, -- one of "all" or a list of languages
-                ignore_install        = { "phpdoc" },        -- List of parsers to ignore installing
+                    "markdown", "markdown_inline", "scss", "astro" }, -- one of "all" or a list of languages
+                ignore_install        = { "phpdoc" },                -- List of parsers to ignore installing
                 highlight             = {
-                    enable = true,                           -- false will disable the whole extension
+                    enable = true,                                   -- false will disable the whole extension
                     disable = function(lang, bufnr)
                         return lang == 'css' or lang == 'help' or vim.api.nvim_buf_line_count(bufnr) > 5000
                     end,

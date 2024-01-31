@@ -19,6 +19,7 @@ local servers = {
     "dockerls",
     "volar",
     "rust_analyzer",
+    "astro"
 }
 
 return {
