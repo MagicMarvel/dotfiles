@@ -327,11 +327,11 @@ return {
     },
     {
         "folke/tokyonight.nvim",
-        lazy = true,
-        -- init = function()
+        lazy   = true,
+        -- init   = function()
         --     vim.cmd [[colorscheme tokyonight]]
         -- end,
-        opts = {
+        opts   = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             style = "moon",         -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -366,17 +366,16 @@ return {
             -- @param colors ColorScheme
             on_highlights = function(highlights, colors) end,
         },
-        -- config   = function(_, opts)
-        --     require("tokyonight").setup(opts)
-        --     vim.cmd [[colorscheme tokyonight]]
-        -- end
+        config = function(_, opts)
+            require("tokyonight").setup(opts)
+        end
     },
     {
         "lunarvim/darkplus.nvim",
         lazy = true,
-        -- init = function()
-        --     vim.cmd [[colorscheme darkplus]]
-        -- end
+        init = function()
+            vim.cmd [[colorscheme darkplus]]
+        end
     },
     {
         "tomasiser/vim-code-dark",
