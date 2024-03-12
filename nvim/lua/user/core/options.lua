@@ -99,3 +99,7 @@ if os.getenv("TERM") == "alacritty" then
 end
 
 vim.cmd [[colorscheme torte]]
+
+vim.api.nvim_exec([[
+  au BufRead,BufNewFile *.mdx set filetype=markdown
+]], false)
