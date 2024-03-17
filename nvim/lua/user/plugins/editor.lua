@@ -523,7 +523,8 @@ return {
                     s = { "<cmd>SwitchIndent<CR>", "Switch Indent" },
                     c = { "<cmd>tabnew $MYVIMRC <CR>", "Config Nvim" },
                     w = { "<cmd>SwitchWrap<CR>", "Switch Wrap" },
-                    n = { "<cmd>SwitchNumber<CR>", "Switch number" }
+                    n = { "<cmd>SwitchNumber<CR>", "Switch Number" },
+                    i = { "<cmd>TSNodeUnderCursor<CR>", "Show TS Node" }
                 }
             }
 

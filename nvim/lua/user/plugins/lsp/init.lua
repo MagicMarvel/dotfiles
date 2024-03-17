@@ -201,7 +201,6 @@ return {
             local formatting = null_ls.builtins.formatting
             -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
             -- local diagnostics = null_ls.builtins.diagnostics
-            vim.print(vim.inspect(vim.opt.tabstop:get()))
             return {
                 debug = false,
                 -- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -254,6 +253,7 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
+        enabled = false,
         cmd = "Copilot",
         event = "InsertEnter",
         opts = {
@@ -265,6 +265,7 @@ return {
     },
     {
         "zbirenbaum/copilot-cmp",
+        enabled = false,
         dependencies = {
             "zbirenbaum/copilot.lua",
         },

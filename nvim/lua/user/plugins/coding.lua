@@ -114,9 +114,9 @@ return {
                     "python", "typescript", "tsx", "css", "rust",
                     "java", "html", "vue", "jsdoc", "yaml",
                     "markdown", "markdown_inline", "scss", "astro" }, -- one of "all" or a list of languages
-                ignore_install        = { "phpdoc" },                -- List of parsers to ignore installing
+                ignore_install        = { "phpdoc" },                 -- List of parsers to ignore installing
                 highlight             = {
-                    enable = true,                                   -- false will disable the whole extension
+                    enable = true,                                    -- false will disable the whole extension
                     disable = function(lang, bufnr)
                         return lang == 'css' or lang == 'help' or vim.api.nvim_buf_line_count(bufnr) > 5000
                     end,
@@ -169,7 +169,7 @@ return {
     },
     {
         "nvim-treesitter/playground",
-        cmd = "TSPlaygroundToggle",
+        cmd = { "TSPlaygroundToggle", "TSNodeUnderCursor", "TSHighlightCapturesUnderCursor" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter"
         }
@@ -478,7 +478,7 @@ return {
                 sorting = {
                     priority_weight = 2,
                     comparators = {
-                        require("copilot_cmp.comparators").prioritize,
+                        -- require("copilot_cmp.comparators").prioritize,
 
                         -- Below is the default comparitor list and order for nvim-cmp
                         cmp.config.compare.offset,
@@ -601,5 +601,5 @@ return {
                 },
             },
         },
-    }
+    },
 }
