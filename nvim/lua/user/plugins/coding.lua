@@ -124,9 +124,6 @@ return {
                 autopairs             = {
                     enable = true,
                 },
-                autotag               = {
-                    enable = true,
-                },
                 matchup               = {
                     enable = true
                 },
