@@ -8,7 +8,7 @@ local servers = {
     "pyright",
     "bashls",
     "jsonls",
-    "emmet_language_server",
+    -- "emmet_language_server",
     "yamlls",
     "tailwindcss",
     "clangd",
@@ -19,7 +19,8 @@ local servers = {
     "dockerls",
     "volar",
     "rust_analyzer",
-    "astro"
+    "astro",
+    "jdtls"
 }
 
 return {
@@ -121,6 +122,9 @@ return {
             local capabilities = require("user.plugins.lsp.handlers").capabilities
 
             for _, server in pairs(servers) do
+                if server == "jdtls" then
+                    goto continue
+                end
                 -- 这里的handle负责配置例如LSP连接成功了以后，配置keymap，配置VIM的出错图标等等，还可以让语言服务器的格式化能力失效
                 -- 转为null-ls提供格式化，如ts-server prettier
                 local opts = {
@@ -184,6 +188,7 @@ return {
                 --     on_attach = on_attach,
                 --     capabilities = capabilities,
                 -- }
+                ::continue::
             end
         end
     },
@@ -238,7 +243,6 @@ return {
         "mfussenegger/nvim-jdtls",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "williamboman/mason.nvim" },
-        build = ":MasonInstall jdtls"
     },
     {
         "ray-x/lsp_signature.nvim",
